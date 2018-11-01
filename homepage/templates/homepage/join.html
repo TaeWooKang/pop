@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
@@ -26,7 +27,7 @@
             </tr>
             <tr>
                 <td>비밀번호<br>
-                    <input type="text" name="user_pwd" id="user_pwd"></td>
+                    <input type="password" name="user_pwd" id="user_pwd"></td>
                 <br>
             </tr>
             <tr>
@@ -40,6 +41,10 @@
                 <br>
             </tr>
         </div>
+        <tr>
+            <td>자동가입 방지</td>
+            <div class="g-recaptcha" data-sitekey="6LcYGHgUAAAAAOgg9nE32r6uvW0xGBX657UFdwum"></div>
+        </tr>
         <input type="submit" value="가입">
     </form>
 </div>
@@ -47,7 +52,7 @@
 </html>
 
 {% load static %}
-<!--<script src="{% static 'js/jquery.min.js' %}"></script>-->
+
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
     var doc = document;
@@ -84,6 +89,15 @@
 	        alert('비밀번호가 입력되지 않았습니다.');
 	        return false;
 	    }
+	    if (typeof(grecaptcha) != 'undefined') {  //캡챠확인
+            if (grecaptcha.getResponse() == "") {
+            alert("자동가입 방지에 체크해 주세요.");
+            return false;
+            }
+            }
+        else {
+            return false;
+        }
 	    this.submit()
 	}
 
@@ -129,5 +143,6 @@
 
         })
     }
+
 
 </script>
