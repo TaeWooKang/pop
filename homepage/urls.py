@@ -22,4 +22,5 @@ urlpatterns = [
     path('ID_check', views.ID_check, name="ID_check"),
     path('nick_check', views.nick_check, name="nick_check"),
     path('join_agree', views.join_agree, name="join_agree"),
+    path('login/', views.login, name="login"),
 ]

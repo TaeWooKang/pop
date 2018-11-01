@@ -64,17 +64,17 @@ def nick_check(request):
 
 
 
-# def login(request):
-#     if request.method == 'GET':
-#         form = LoginForm()
-#         return render(request, 'homepage/login.html', {'form':form})
-#     else:
-#         user_id = request['user_id']
-#         user_pw = request.POST['user_pw']
-#
-#         try:
-#             Member.objects.get(user_id=user_id, user_pw=user_pw)
-#         except Member.DoseNotExist:
-#             return HttpResponse('로그인 실패')
-#         else:
-#             return HttpResponse('로그인 성공')
+def login(request):
+    result = ''
+    if request.method=='GET':
+        return render(request, 'homepage/login.html', {})
+    else:
+        user_id = request.POST['user_id']
+        user_pwd = request.POST['user_pwd']
+
+        try:
+            Member.objects.get(user_id = user_id,
+                           user_pwd = user_pwd)
+        except Member.DoesNotExist:
+            return HttpResponse('로그인 실패')
+        return HttpResponse('로그인 완료')
