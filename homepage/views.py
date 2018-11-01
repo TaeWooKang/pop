@@ -77,4 +77,6 @@ def login(request):
                            user_pwd = user_pwd)
         except Member.DoesNotExist:
             return HttpResponse('로그인 실패')
-        return HttpResponse('로그인 완료')
+        else:
+            request.session['user_id'] = user_id
+            return HttpResponse('로그인 완료')
