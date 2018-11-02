@@ -35,32 +35,34 @@ def join(request):
 
 
 def ID_check(request):
+
     user_id = request.POST['user_id']
+    id_confirm = request.POST['id_confirm']
+
     try:
         Member.objects.get(user_id=user_id)
     except Member.DoesNotExist as e:
         pass
-        res = {'user_id': user_id, 'msg': '가입 가능'}
+        res = {'user_id': user_id, 'msg': '가입 가능','id_confirm':True}
         return JsonResponse(res)
     else:
-        res = {'user_id': user_id, 'msg': '가입 불가'}
+        res = {'user_id': user_id, 'msg': '가입 불가','id_confirm':False}
         return JsonResponse(res)
 
 def nick_check(request):
+
     user_nick = request.POST['user_nick']
+    nick_confirm = request.POST['nick_confirm']
+
     try:
         Member.objects.get(user_nick=user_nick)
     except Member.DoesNotExist as e:
         pass
-        res = {'user_nick': user_nick, 'msg': '가입 가능'}
+        res = {'user_nick': user_nick, 'msg': '가입 가능','nick_confirm':True}
         return JsonResponse(res)
     else:
-        res = {'user_nick': user_nick, 'msg': '가입 불가'}
+        res = {'user_nick': user_nick, 'msg': '가입 불가','nick_confirm':False}
         return JsonResponse(res)
-
-
-
-
 
 
 
