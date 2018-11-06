@@ -1,16 +1,53 @@
+{% load staticfiles %}
 <!doctype html>
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>회원가입</title>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <meta http-equiv="content-type" content="text/html;">
+    <link rel="canonical" href="">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body>
-<h1>POP 회원가입</h1>
+    <div id="wrapper">
+
+        <div class="nav-wrapper">
+            <div class="container">
+                
+                <nav class="navbar navbar-default navbar-inverse" role="navigation">
+                  <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                    <a href="{% url 'main' %}" class="navbar-brand">POP COMMUNITY</a>
+                    </div>
+                  </div><!-- /.container-fluid -->
+                </nav>
+
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>
+
+	<div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <br /><br />
+                 <br />
+            </div>
+        </div>
+         <div class="row ">
+                  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+							<strong>POP COMMUNITY 회원가입</strong>
+        </div>
+
 
 <form action="{% url 'join' %}" method="get" id="form1">
-    <h2>참고문서</h2>
+    <h4 class="row text-center"><strong>참고문서</strong></h4>
     <ul>
         <li>POP 이용약관 동의 문서</li>
         <div>
@@ -181,30 +218,34 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
         </div>
     </ul>
 
-    <h2>약관선택</h2>
+    <h4 class="row text-center"><strong>약관동의</strong></h4>
     <p>
         <label>
+		&nbsp;
             <input type="checkbox" name="all" id="all">
             전체선택
         </label>
     </p>
     <p>
         <label>
+		&nbsp;
             <input type="checkbox" name="c1" id="c1">
             POP 이용약관 동의(필수)
         </label>
     </p>
     <p>
         <label>
+		&nbsp;
             <input type="checkbox" name="c2" id="c2">
             개인정보 수집 및 이용에 대한 안내(필수)
         </label>
     </p>
 
-    <p>
-        <input type="submit" value="동의">
-        <input type="reset" value="미동의">
-    </p>
+    <div class="text-center">
+        <input type="submit" class="btn btn-success" value="동의">
+        <a href="{% url 'main' %}" ><input type="button" class="btn btn-danger" value="미동의"></a>
+    </div>
+	</br>
 </form>
 
 <script>
